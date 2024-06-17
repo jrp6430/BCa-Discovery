@@ -1,4 +1,4 @@
-from sklearn.model_selection import StratifiedKFold, cross_val_score
+from sklearn.model_selection import ShuffleSplit, cross_val_score
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.svm import SVC
 from sklearn.neighbors import KNeighborsClassifier
@@ -45,7 +45,7 @@ def top_n_eval(dfs, target):
 
         # set up cross validation mechanisms: a ShuffleSplit object will result in the same stratification
         # if used across multiple models. So, we must instantiate multiple objects
-        cv1 = Stratified(n_splits=5, test_size=0.2, random_state=3)
+        cv1 = ShuffleSplit(n_splits=5, test_size=0.2, random_state=3)
         cv2 = ShuffleSplit(n_splits=5, test_size=0.2, random_state=3)
         cv3 = ShuffleSplit(n_splits=5, test_size=0.2, random_state=3)
 
@@ -83,10 +83,3 @@ def top_n_eval(dfs, target):
         print("The cross-validated mean AUROC of the KNN model is", knn_mean_auroc, "w/ std", knn_std_auroc)
 
     return
-
-
-
-
-
-
-
