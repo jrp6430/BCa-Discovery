@@ -41,10 +41,10 @@ def prep_data(df):
 
 # function to execute optimized random forest technique for feature selection
 def optimized_rf_gene_select(df, target, iter=1000):
-    # initialize dictionary where number of times each gene has appeared in the RF top 100 is stored
+    # initialize series to store the top 100 genes in each RF trial
     genes = pd.Series()
 
-    # repeat the random forest algorithm for the desired number of iteration
+    # repeat the random forest algorithm for the desired number of iterations
     for i in range(iter):
         print("Iteration no.", i)
         # instantiate RF classifier, initialize its random state
